@@ -40,16 +40,16 @@ public class PA {
 		return setOfMessages;
 	} 
 	
-	public static CFSMs doProject(PA pa, String peer){
+	public CFSMs doProject(String peer){
 		
 		String newName=peer;
 		
-		String newInitialState=pa.getInitialState();
+		String newInitialState=this.getInitialState();
 		
-		Set<String> newSetOfStates=pa.getSetOfStates();
+		Set<String> newSetOfStates=this.getSetOfStates();
 		
 		Set<String> newSetOfTransitions=new HashSet<String>();
-		Iterator<String> itTransitions = pa.getSetOfTransitions().iterator();
+		Iterator<String> itTransitions = this.getSetOfTransitions().iterator();
 	    while(itTransitions.hasNext()){
 	    	 String transition=itTransitions.next();
 	    	 String fromPeer=transition.split("\\|")[2].split("->")[0];
@@ -72,7 +72,7 @@ public class PA {
 	    	  
 	    }
 	    
-	    Set<String> newSetOfMessages=pa.getSetOfMessages();
+	    Set<String> newSetOfMessages=this.getSetOfMessages();
 	    
 		return new CFSMs(newName, newInitialState, newSetOfStates, newSetOfTransitions, newSetOfMessages);
 	}

@@ -47,12 +47,12 @@ public class Test {
       
 		PA pa=new PA("firstExample", ReadPA.initialState, ReadPA.setOfPeers, ReadPA.setOfStates, ReadPA.setOfTransitions, ReadPA.setOfMessages);
 		System.out.println(pa.getName());
-		System.out.println(PA.doProject(pa, "A").getName());
-		System.out.println(PA.doProject(pa, "A").getInitialState());
-		PA.doProject(pa, "A").getSetOfTransitions();
-		System.out.println("The number of state is "+PA.doProject(pa, "A").getSetOfStates().size());
-		System.out.println("The number of transition is "+PA.doProject(pa, "A").getSetOfTransitions().size());
-		Iterator<String> it = PA.doProject(pa, "C").getSetOfTransitions().iterator();
+		System.out.println(pa.doProject("A").getName());
+		System.out.println(pa.doProject("A").getInitialState());
+		pa.doProject("A").getSetOfTransitions();
+		System.out.println("The number of state is "+pa.doProject("A").getSetOfStates().size());
+		System.out.println("The number of transition is "+pa.doProject("A").getSetOfTransitions().size());
+		Iterator<String> it = pa.doProject("A").getSetOfTransitions().iterator();
 		while(it.hasNext()){
 		   String tr=it.next();
 		   System.out.println(tr.split("\\|")[2]);
@@ -61,12 +61,16 @@ public class Test {
 		System.out.println("end");
 		System.out.println("ε");
 	 	
-        try {  
-        	WriteCFSMs.buildCFSMs(PA.doProject(pa, "C"));
+        try { 
+        	WriteCFSMs.buildCFSMs(pa.doProject("A"));
+        	WriteCFSMs.buildCFSMs(pa.doProject("B"));
+        	WriteCFSMs.buildCFSMs(pa.doProject("C"));
         } catch (Exception e) {  
         	// TODO Auto-generated catch block  
         	e.printStackTrace();  
         }  
+        
+        
 
 	}
 
