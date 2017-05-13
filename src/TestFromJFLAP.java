@@ -1,12 +1,13 @@
 import java.util.Iterator;
 
-public class Test {
+public class TestFromJFLAP {
 
 	public static void main(String[] args) {
 		
-		ReadPA.read();
+		ReadPAFromJFLAP.read();
+		//ReadPAFromMCRL2.read();
 		
-		Iterator<String> itStates = ReadPA.setOfStates.iterator();
+		Iterator<String> itStates = ReadPAFromJFLAP.setOfStates.iterator();
 		while(itStates.hasNext()){
    	   
 			System.out.println("state: "+itStates.next());
@@ -14,7 +15,7 @@ public class Test {
 
 		System.out.println("**************");
       
-		Iterator<String> itTransitions = ReadPA.setOfTransitions.iterator();
+		Iterator<String> itTransitions = ReadPAFromJFLAP.setOfTransitions.iterator();
 		while(itTransitions.hasNext()){
 			String trans=itTransitions.next();
 			String[] actions=trans.split("\\|");
@@ -27,25 +28,25 @@ public class Test {
    	  
 			System.out.println("transition: "+trans);
    	   
-			ReadPA.setOfPeers.add(fromPeer);
-			ReadPA.setOfPeers.add(toPeer);
-			ReadPA.setOfMessages.add(message);
+			ReadPAFromJFLAP.setOfPeers.add(fromPeer);
+			ReadPAFromJFLAP.setOfPeers.add(toPeer);
+			ReadPAFromJFLAP.setOfMessages.add(message);
 		}
       
-		Iterator<String> itPeers = ReadPA.setOfPeers.iterator();
+		Iterator<String> itPeers = ReadPAFromJFLAP.setOfPeers.iterator();
 		while(itPeers.hasNext()){
 			String peer=itPeers.next();
 			System.out.println(peer);  	  
 		}
       
-		Iterator<String> itMessages = ReadPA.setOfMessages.iterator();
+		Iterator<String> itMessages = ReadPAFromJFLAP.setOfMessages.iterator();
 		while(itMessages.hasNext()){
 			String message=itMessages.next();
 			System.out.println(message);
    	   
 		}
       
-		PA pa=new PA("firstExample", ReadPA.initialState, ReadPA.setOfPeers, ReadPA.setOfStates, ReadPA.setOfTransitions, ReadPA.setOfMessages);
+		PA pa=new PA("firstExample", ReadPAFromJFLAP.initialState, ReadPAFromJFLAP.setOfPeers, ReadPAFromJFLAP.setOfStates, ReadPAFromJFLAP.setOfTransitions, ReadPAFromJFLAP.setOfMessages);
 		System.out.println(pa.getName());
 		System.out.println(pa.doProject("A").getName());
 		System.out.println(pa.doProject("A").getInitialState());
@@ -62,9 +63,9 @@ public class Test {
 		System.out.println("ε");
 	 	
         try { 
-        	WriteCFSMs.buildCFSMs(pa.doProject("A"));
-        	WriteCFSMs.buildCFSMs(pa.doProject("B"));
-        	WriteCFSMs.buildCFSMs(pa.doProject("C"));
+        	WriteCFSMsToJFLAP.buildCFSMs(pa.doProject("A"));
+        	WriteCFSMsToJFLAP.buildCFSMs(pa.doProject("B"));
+        	WriteCFSMsToJFLAP.buildCFSMs(pa.doProject("C"));
         } catch (Exception e) {  
         	// TODO Auto-generated catch block  
         	e.printStackTrace();  

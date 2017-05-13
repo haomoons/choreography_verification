@@ -1,4 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/PA.java=UTF-8
-encoding//src/ReadPA.java=UTF-8
-encoding//src/Test.java=UTF-8
+encoding//src/ReadPAFromJFLAP.java=UTF-8
+encoding//src/ReadPAFromMCRL2.java=UTF-8
+encoding//src/TestFromJFLAP.java=UTF-8
+encoding//src/TestFromMCRL2.java=UTF-8
+encoding//src/WriteCFSMsToMCRL2.java=UTF-8

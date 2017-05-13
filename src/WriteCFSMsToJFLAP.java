@@ -8,7 +8,7 @@ import org.jdom2.Element;
 import org.jdom2.output.XMLOutputter;
 
 
-public class WriteCFSMs {
+public class WriteCFSMsToJFLAP {
 	
     public static void buildCFSMs(CFSMs cfsm) throws Exception {  
     	

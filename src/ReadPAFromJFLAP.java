@@ -6,7 +6,7 @@ import java.util.Set;
 
 import org.apache.xerces.parsers.DOMParser;
 
-public class ReadPA {	
+public class ReadPAFromJFLAP {	
 	
 	static Set<String> setOfPeers=new HashSet<String>();
 	static Set<String> setOfTransitions=new HashSet<String>(); 
