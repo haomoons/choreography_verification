@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/automata/CFSMs.java=UTF-8
 encoding//src/automata/PA.java=UTF-8
+encoding//src/findAllPaths/FindAllPath.java=UTF-8
 encoding//src/findAllPaths/Node.java=UTF-8
 encoding//src/findAllPaths/Search.java=UTF-8
 encoding//src/io/ReadPAFromJFLAP.java=UTF-8

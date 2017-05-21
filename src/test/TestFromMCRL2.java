@@ -84,7 +84,7 @@ public class TestFromMCRL2 {
         System.out.println(strc);
         
         System.out.println(pa.doProject("A").getSetOfWords(pa.doProject("A").getListOfPaths("1", "4")).toString());
-        //pa.doProject("A").getSetOfWords(pa.doProject("A").getListOfPaths("1", "4")).toString();
+        
 
 	}
 
