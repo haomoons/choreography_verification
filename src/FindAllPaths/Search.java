@@ -9,17 +9,17 @@ import java.util.Stack;
   
 public class Search {  
     /* 临时保存路径节点的栈 */  
-    public static Stack<Node> stack = new Stack<Node>();  
+    public  Stack<Node> stack = new Stack<Node>();  
     /* 存储路径的集合 */  
-    public static ArrayList<Object[]> sers = new ArrayList<Object[]>(); 
-    public static ArrayList<String> result = new ArrayList<String>(); 
+    public  ArrayList<Object[]> sers = new ArrayList<Object[]>(); 
+    public  ArrayList<String> result = new ArrayList<String>(); 
     
-    public static ArrayList<String> getResult(){
+    public  ArrayList<String> getResult(){
     	return result;
     }
   
     /* 判断节点是否在栈中 */  
-    public static boolean isNodeInStack(Node node)  
+    public  boolean isNodeInStack(Node node)  
     {  
         Iterator<Node> it = stack.iterator();  
         while (it.hasNext()) {  
@@ -31,25 +31,25 @@ public class Search {
     }  
   
     /* 此时栈中的节点组成一条所求路径，转储并打印输出 */  
-    public static void showAndSavePath()  
+    public  void showAndSavePath()  
     {  
-    	String words="";
+    	String paths="";
         Object[] o = stack.toArray();  
         for (int i = 0; i < o.length; i++) {  
             Node nNode = (Node) o[i];  
               
             if(i < (o.length - 1)) { 
                // System.out.print(nNode.getName() + "->");  
-                words=words+nNode.getName() + "->";
+            	paths=paths+nNode.getName() + "->";
             }
             else {
                // System.out.print(nNode.getName());
-                words=words+nNode.getName();
+            	paths=paths+nNode.getName();
             }
         }  
         sers.add(o); /* 转储 */ 
-        System.out.println("the path: "+ words);
-        result.add(words);
+        System.out.println("the path: "+ paths);
+        result.add(paths);
         System.out.println("\n"); 
     }  
   
@@ -60,7 +60,7 @@ public class Search {
      * sNode: 最初的起始节点startNode 
      * eNode: 终点endNode 
      */  
-    public static boolean getPaths(Node cNode, Node pNode, Node sNode, Node eNode) {  
+    public boolean getPaths(Node cNode, Node pNode, Node sNode, Node eNode) {  
         Node nNode = null;  
         /* 如果符合条件判断说明出现环路，不能再顺着该路径继续寻路，返回false */  
         if (cNode != null && pNode != null && cNode == pNode)  
@@ -123,7 +123,7 @@ public class Search {
             return false;  
     }  
   
-    public static void main(String[] args) {  
+    public void getStart(Set<String> setOfStates, Set<String> setOfTransitions, int s, int t) {  
         /* 定义节点关系 */  
 //        int nodeRalation[][] =  
 //        {  
@@ -143,18 +143,18 @@ public class Search {
 //                {},    //3             
 //            };  
         
-        Set<String> setOfTransitions = new HashSet<String>();
-        setOfTransitions.add("1|2|a");
-        setOfTransitions.add("1|3|b");
-        setOfTransitions.add("3|2|c");
-        setOfTransitions.add("2|4|d");
-        setOfTransitions.add("3|4|e");
+//        Set<String> setOfTransitions = new HashSet<String>();
+//        setOfTransitions.add("1|2|a");
+//        setOfTransitions.add("1|3|b");
+//        setOfTransitions.add("3|2|c");
+//        setOfTransitions.add("2|4|d");
+//        setOfTransitions.add("3|4|e");
 		
-		Set<String> setOfStates = new HashSet<String>();
-		setOfStates.add("1");
-		setOfStates.add("2");
-		setOfStates.add("3");
-		setOfStates.add("4");
+//		Set<String> setOfStates = new HashSet<String>();
+//		setOfStates.add("1");
+//		setOfStates.add("2");
+//		setOfStates.add("3");
+//		setOfStates.add("4");
 
 				
 		String[] arrOfStates= (String[])setOfStates.toArray(new String[setOfStates.size()]);
@@ -165,11 +165,9 @@ public class Search {
 		nodeRelation=new int[setOfStates.size()][];
 		
 		
-		int n=0;
 		for(int i=1;i<=arrOfStates.length;i++)  
 		{  
 			int size=0;		
-			n++;
 			for(int j=0;j<arrOfTransitions.length;j++){
 				if(arrOfTransitions[j].split("\\|")[0].equals(String.valueOf(i))){
                         size++;	            
@@ -215,8 +213,7 @@ public class Search {
         }  
   
         /* 开始搜索所有路径 */  
-        getPaths(node[0], null, node[0], node[3]);  
-          
-        System.out.println(result.toString());
+        getPaths(node[s-1], null, node[0], node[t-1]);  
+              
     }  
 }  

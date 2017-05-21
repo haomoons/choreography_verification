@@ -67,10 +67,40 @@ public class CFSMs {
 	}
 	
 	public ArrayList<String> getListOfPaths(String s, String t){
-		
-		
-		return Search.getResult();
+		int i=Integer.parseInt(s);
+		int j=Integer.parseInt(t);
+		Search search=new Search();
+		search.getStart(getSetOfStates(), getSetOfTransitions(), i, j);			
+		return search.getResult();
     }
+	
+	
+	public Set<String> getSetOfWords(ArrayList<String> arrList){
+		HashSet<String> setOfWords=new HashSet<String>();
+		
+		String[] arrOfTransitions= (String[])this.getSetOfTransitions().toArray(new String[this.getSetOfTransitions().size()]);
+		
+		for(int i=0;i<arrList.size();i++){
+			String[] arrOfPaths=arrList.get(i).split("->");
+			String words="";
+			for(int j=0; j<arrOfPaths.length-1; j++){
+				for(int k=0; k<arrOfTransitions.length;k++){
+					if(arrOfPaths[j].equals(arrOfTransitions[k].split("\\|")[0]) && arrOfPaths[j+1].equals(arrOfTransitions[k].split("\\|")[1])){
+						if(words.equals("")){
+							words=words+arrOfTransitions[k].split("\\|")[2];
+						}
+						else
+							words=words+"->"+arrOfTransitions[k].split("\\|")[2];
+					}
+				}
+			}
+			
+			if(!words.equals("")){
+				setOfWords.add(words);
+			}
+		}
+		return setOfWords;
+	}
 	
 	public Set<String> findRemovableEpsilonTransitions(){
 		Set<String> SetOfRemovableEpsilonTransitions= new HashSet<String>();
@@ -85,7 +115,7 @@ public class CFSMs {
 			while(itRest.hasNext()){
 				  String trRest=itRest.next();
 				  
-				  if(trEpsilon.split("\\|")[0].equals(trRest.split("\\|")[0]) && !trRest.split("\\|")[2].equals("ε")){
+				  if(trEpsilon.split("\\|")[0].equals(trRest.split("\\|")[0]) && !trRest.split("\\|")[2].equals("Îµ")){
 					  
 					  continue;
 				  }

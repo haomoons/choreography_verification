@@ -73,6 +73,18 @@ public class TestFromMCRL2 {
         }  
         
         
+        
+        String stra=pa.doProject("A").getListOfPaths("1", "4").toString();
+        System.out.println(stra);
+        
+        String strb=pa.doProject("B").getListOfPaths("1", "4").toString();
+        System.out.println(strb);
+        
+        String strc=pa.doProject("C").getListOfPaths("1", "4").toString();
+        System.out.println(strc);
+        
+        System.out.println(pa.doProject("A").getSetOfWords(pa.doProject("A").getListOfPaths("1", "4")).toString());
+        //pa.doProject("A").getSetOfWords(pa.doProject("A").getListOfPaths("1", "4")).toString();
 
 	}
 

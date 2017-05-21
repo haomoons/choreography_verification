@@ -9,11 +9,11 @@ import org.apache.xerces.parsers.DOMParser;
 
 public class ReadPAFromJFLAP {	
 	
-	public static Set<String> setOfPeers=new HashSet<String>();
-	public static Set<String> setOfTransitions=new HashSet<String>(); 
-	public static Set<String> setOfMessages=new HashSet<String>();;
-	public static Set<String> setOfStates=new HashSet<String>();
-	public static String initialState;
+	static Set<String> setOfPeers=new HashSet<String>();
+	static Set<String> setOfTransitions=new HashSet<String>(); 
+	static Set<String> setOfMessages=new HashSet<String>();;
+	static Set<String> setOfStates=new HashSet<String>();
+	static String initialState;
 	
     public static String getInitialState(){
     	return initialState;
