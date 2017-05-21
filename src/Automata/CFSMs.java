@@ -1,7 +1,10 @@
 package Automata;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+
+import FindAllPaths.Search;
 
 public class CFSMs {
 
@@ -9,9 +12,9 @@ public class CFSMs {
 	String initalState;
 	Set<String> setOfStates, setOfTransitions, setOfMessages;
 	
-	CFSMs(){}
+	public CFSMs(){}
 	
-	CFSMs(String name, String initialState, Set<String> setOfStates,Set<String> setOfTransitions,Set<String> setOfMessages){
+	public CFSMs(String name, String initialState, Set<String> setOfStates,Set<String> setOfTransitions,Set<String> setOfMessages){
 		this.name=name;
 		this.initalState=initialState;
 		this.setOfStates=setOfStates;
@@ -63,21 +66,10 @@ public class CFSMs {
 		return setOfRestTransitions;
 	}
 	
-	public Set<String> getSetOfWords(String s, String t){
-		Set<String> setOfWords= new HashSet<String>();
-		//for(int i=0;i<this.getSetOfTransitions().size();i++){
-		Iterator<String> it = this.getSetOfTransitions().iterator();
-		String words="";
-		while(this.getSetOfTransitions().size()>0){
-			String tr=it.next();
-			if(tr.split("\\|")[0].equals(s)){
-				words=words+tr.split("\\|")[2]+"|";
-				it.remove();
-			}
-		}
-		//}
+	public ArrayList<String> getListOfPaths(String s, String t){
 		
-		return setOfWords;
+		
+		return Search.getResult();
     }
 	
 	public Set<String> findRemovableEpsilonTransitions(){
