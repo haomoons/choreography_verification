@@ -1,8 +1,8 @@
-package FindAllPaths;
+package findAllPaths;
 
 import java.util.ArrayList;  
 
-/* 表示一个节点以及和这个节点相连的所有节点 */  
+/* 表示一个节点以�?�和这个节点相连的所有节点 */  
 public class Node  
 {  
     public String name = null;  

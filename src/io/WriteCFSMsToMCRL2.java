@@ -1,11 +1,11 @@
-package IO;
+package io;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
 
-import Automata.CFSMs;
+import automata.CFSMs;
 
 public class WriteCFSMsToMCRL2 {
 	public static void buildCFSMs(CFSMs cfsm) {

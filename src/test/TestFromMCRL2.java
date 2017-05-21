@@ -1,18 +1,17 @@
-package Test;
+package test;
 import java.util.Iterator;
 
-import Automata.PA;
-import IO.ReadPAFromJFLAP;
-import IO.WriteCFSMsToJFLAP;
+import automata.PA;
+import io.ReadPAFromMCRL2;
+import io.WriteCFSMsToMCRL2;
 
-public class TestFromJFLAP {
+public class TestFromMCRL2 {
 
 	public static void main(String[] args) {
 		
-		ReadPAFromJFLAP.read();
-		//ReadPAFromMCRL2.read();
+		ReadPAFromMCRL2.read();
 		
-		Iterator<String> itStates = ReadPAFromJFLAP.getSetOfStates().iterator();
+		Iterator<String> itStates = ReadPAFromMCRL2.getSetOfStates().iterator();
 		while(itStates.hasNext()){
    	   
 			System.out.println("state: "+itStates.next());
@@ -20,7 +19,7 @@ public class TestFromJFLAP {
 
 		System.out.println("**************");
       
-		Iterator<String> itTransitions = ReadPAFromJFLAP.getSetOfTransitions().iterator();
+		Iterator<String> itTransitions = ReadPAFromMCRL2.getSetOfTransitions().iterator();
 		while(itTransitions.hasNext()){
 			String trans=itTransitions.next();
 			String[] actions=trans.split("\\|");
@@ -32,26 +31,23 @@ public class TestFromJFLAP {
 			String message=action.split(":")[1];
    	  
 			System.out.println("transition: "+trans);
-   	   
-			ReadPAFromJFLAP.getSetOfPeers().add(fromPeer);
-			ReadPAFromJFLAP.getSetOfPeers().add(toPeer);
-			ReadPAFromJFLAP.getSetOfMessages().add(message);
+   	
 		}
       
-		Iterator<String> itPeers = ReadPAFromJFLAP.getSetOfPeers().iterator();
+		Iterator<String> itPeers = ReadPAFromMCRL2.getSetOfPeers().iterator();
 		while(itPeers.hasNext()){
 			String peer=itPeers.next();
 			System.out.println(peer);  	  
 		}
       
-		Iterator<String> itMessages = ReadPAFromJFLAP.getSetOfMessages().iterator();
+		Iterator<String> itMessages = ReadPAFromMCRL2.getSetOfMessages().iterator();
 		while(itMessages.hasNext()){
 			String message=itMessages.next();
 			System.out.println(message);
    	   
 		}
       
-		PA pa=new PA("firstExample", ReadPAFromJFLAP.getInitialState(), ReadPAFromJFLAP.getSetOfPeers(), ReadPAFromJFLAP.getSetOfStates(), ReadPAFromJFLAP.getSetOfTransitions(), ReadPAFromJFLAP.getSetOfMessages());
+		PA pa=new PA("firstExample", ReadPAFromMCRL2.getInitialState(), ReadPAFromMCRL2.getSetOfPeers(), ReadPAFromMCRL2.getSetOfStates(), ReadPAFromMCRL2.getSetOfTransitions(), ReadPAFromMCRL2.getSetOfMessages());
 		System.out.println(pa.getName());
 		System.out.println(pa.doProject("A").getName());
 		System.out.println(pa.doProject("A").getInitialState());
@@ -68,15 +64,27 @@ public class TestFromJFLAP {
 		System.out.println("ε");
 	 	
         try { 
-        	WriteCFSMsToJFLAP.buildCFSMs(pa.doProject("A"));
-        	WriteCFSMsToJFLAP.buildCFSMs(pa.doProject("B"));
-        	WriteCFSMsToJFLAP.buildCFSMs(pa.doProject("C"));
+        	WriteCFSMsToMCRL2.buildCFSMs(pa.doProject("A"));
+        	WriteCFSMsToMCRL2.buildCFSMs(pa.doProject("B"));
+        	WriteCFSMsToMCRL2.buildCFSMs(pa.doProject("C"));
         } catch (Exception e) {  
         	// TODO Auto-generated catch block  
         	e.printStackTrace();  
         }  
         
         
+        
+        String stra=pa.doProject("A").getListOfPaths("1", "4").toString();
+        System.out.println(stra);
+        
+        String strb=pa.doProject("B").getListOfPaths("1", "4").toString();
+        System.out.println(strb);
+        
+        String strc=pa.doProject("C").getListOfPaths("1", "4").toString();
+        System.out.println(strc);
+        
+        System.out.println(pa.doProject("A").getSetOfWords(pa.doProject("A").getListOfPaths("1", "4")).toString());
+        //pa.doProject("A").getSetOfWords(pa.doProject("A").getListOfPaths("1", "4")).toString();
 
 	}
 

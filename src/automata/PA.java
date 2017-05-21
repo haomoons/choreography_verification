@@ -1,4 +1,4 @@
-package Automata;
+package automata;
 import java.util.*;
 
 

@@ -1,4 +1,4 @@
-package IO;
+package io;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.output.XMLOutputter;
 
-import Automata.CFSMs;
+import automata.CFSMs;
 
 
 public class WriteCFSMsToJFLAP {

@@ -1,4 +1,4 @@
-package IO;
+package io;
 import org.w3c.dom.*;
 
 import java.util.HashSet;
