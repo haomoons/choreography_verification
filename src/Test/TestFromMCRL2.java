@@ -1,4 +1,9 @@
+package Test;
 import java.util.Iterator;
+
+import Automata.PA;
+import IO.ReadPAFromMCRL2;
+import IO.WriteCFSMsToMCRL2;
 
 public class TestFromMCRL2 {
 
@@ -6,7 +11,7 @@ public class TestFromMCRL2 {
 		
 		ReadPAFromMCRL2.read();
 		
-		Iterator<String> itStates = ReadPAFromMCRL2.setOfStates.iterator();
+		Iterator<String> itStates = ReadPAFromMCRL2.getSetOfStates().iterator();
 		while(itStates.hasNext()){
    	   
 			System.out.println("state: "+itStates.next());
@@ -14,7 +19,7 @@ public class TestFromMCRL2 {
 
 		System.out.println("**************");
       
-		Iterator<String> itTransitions = ReadPAFromMCRL2.setOfTransitions.iterator();
+		Iterator<String> itTransitions = ReadPAFromMCRL2.getSetOfTransitions().iterator();
 		while(itTransitions.hasNext()){
 			String trans=itTransitions.next();
 			String[] actions=trans.split("\\|");
@@ -29,20 +34,20 @@ public class TestFromMCRL2 {
    	
 		}
       
-		Iterator<String> itPeers = ReadPAFromMCRL2.setOfPeers.iterator();
+		Iterator<String> itPeers = ReadPAFromMCRL2.getSetOfPeers().iterator();
 		while(itPeers.hasNext()){
 			String peer=itPeers.next();
 			System.out.println(peer);  	  
 		}
       
-		Iterator<String> itMessages = ReadPAFromMCRL2.setOfMessages.iterator();
+		Iterator<String> itMessages = ReadPAFromMCRL2.getSetOfMessages().iterator();
 		while(itMessages.hasNext()){
 			String message=itMessages.next();
 			System.out.println(message);
    	   
 		}
       
-		PA pa=new PA("firstExample", ReadPAFromMCRL2.initialState, ReadPAFromMCRL2.setOfPeers, ReadPAFromMCRL2.setOfStates, ReadPAFromMCRL2.setOfTransitions, ReadPAFromMCRL2.setOfMessages);
+		PA pa=new PA("firstExample", ReadPAFromMCRL2.getInitialState(), ReadPAFromMCRL2.getSetOfPeers(), ReadPAFromMCRL2.getSetOfStates(), ReadPAFromMCRL2.getSetOfTransitions(), ReadPAFromMCRL2.getSetOfMessages());
 		System.out.println(pa.getName());
 		System.out.println(pa.doProject("A").getName());
 		System.out.println(pa.doProject("A").getInitialState());

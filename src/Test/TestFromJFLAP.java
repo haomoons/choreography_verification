@@ -1,4 +1,9 @@
+package Test;
 import java.util.Iterator;
+
+import Automata.PA;
+import IO.ReadPAFromJFLAP;
+import IO.WriteCFSMsToJFLAP;
 
 public class TestFromJFLAP {
 
@@ -7,7 +12,7 @@ public class TestFromJFLAP {
 		ReadPAFromJFLAP.read();
 		//ReadPAFromMCRL2.read();
 		
-		Iterator<String> itStates = ReadPAFromJFLAP.setOfStates.iterator();
+		Iterator<String> itStates = ReadPAFromJFLAP.getSetOfStates().iterator();
 		while(itStates.hasNext()){
    	   
 			System.out.println("state: "+itStates.next());
@@ -15,7 +20,7 @@ public class TestFromJFLAP {
 
 		System.out.println("**************");
       
-		Iterator<String> itTransitions = ReadPAFromJFLAP.setOfTransitions.iterator();
+		Iterator<String> itTransitions = ReadPAFromJFLAP.getSetOfTransitions().iterator();
 		while(itTransitions.hasNext()){
 			String trans=itTransitions.next();
 			String[] actions=trans.split("\\|");
@@ -28,25 +33,25 @@ public class TestFromJFLAP {
    	  
 			System.out.println("transition: "+trans);
    	   
-			ReadPAFromJFLAP.setOfPeers.add(fromPeer);
-			ReadPAFromJFLAP.setOfPeers.add(toPeer);
-			ReadPAFromJFLAP.setOfMessages.add(message);
+			ReadPAFromJFLAP.getSetOfPeers().add(fromPeer);
+			ReadPAFromJFLAP.getSetOfPeers().add(toPeer);
+			ReadPAFromJFLAP.getSetOfMessages().add(message);
 		}
       
-		Iterator<String> itPeers = ReadPAFromJFLAP.setOfPeers.iterator();
+		Iterator<String> itPeers = ReadPAFromJFLAP.getSetOfPeers().iterator();
 		while(itPeers.hasNext()){
 			String peer=itPeers.next();
 			System.out.println(peer);  	  
 		}
       
-		Iterator<String> itMessages = ReadPAFromJFLAP.setOfMessages.iterator();
+		Iterator<String> itMessages = ReadPAFromJFLAP.getSetOfMessages().iterator();
 		while(itMessages.hasNext()){
 			String message=itMessages.next();
 			System.out.println(message);
    	   
 		}
       
-		PA pa=new PA("firstExample", ReadPAFromJFLAP.initialState, ReadPAFromJFLAP.setOfPeers, ReadPAFromJFLAP.setOfStates, ReadPAFromJFLAP.setOfTransitions, ReadPAFromJFLAP.setOfMessages);
+		PA pa=new PA("firstExample", ReadPAFromJFLAP.getInitialState(), ReadPAFromJFLAP.getSetOfPeers(), ReadPAFromJFLAP.getSetOfStates(), ReadPAFromJFLAP.getSetOfTransitions(), ReadPAFromJFLAP.getSetOfMessages());
 		System.out.println(pa.getName());
 		System.out.println(pa.doProject("A").getName());
 		System.out.println(pa.doProject("A").getInitialState());

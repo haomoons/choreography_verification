@@ -1,3 +1,4 @@
+package IO;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,11 +8,32 @@ import java.util.Set;
 
 public class ReadPAFromMCRL2 {
 
-	static Set<String> setOfPeers=new HashSet<String>();
-	static Set<String> setOfTransitions=new HashSet<String>(); 
-	static Set<String> setOfMessages=new HashSet<String>();;
-	static Set<String> setOfStates=new HashSet<String>();
-	static String initialState;
+	public static Set<String> setOfPeers=new HashSet<String>();
+	public static Set<String> setOfTransitions=new HashSet<String>(); 
+	public static Set<String> setOfMessages=new HashSet<String>();;
+	public static Set<String> setOfStates=new HashSet<String>();
+	public static String initialState;
+	
+	public static String getInitialState(){
+    	return initialState;
+    }
+    
+    public static Set<String> getSetOfPeers(){
+    	return setOfPeers;
+    }
+    
+    public static Set<String> getSetOfTransitions(){
+    	return setOfTransitions;
+    }
+    
+    public static Set<String> getSetOfMessages(){
+    	return setOfMessages;
+    }
+    
+    public static Set<String> getSetOfStates(){
+    	return setOfStates;
+    }
+	
 	
 	public static void read() {
 		  

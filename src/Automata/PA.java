@@ -1,3 +1,4 @@
+package Automata;
 import java.util.*;
 
 
@@ -7,7 +8,7 @@ public class PA {
 	String initalState;
 	Set<String> setOfPeers, setOfStates, setOfTransitions, setOfMessages;
 	
-	PA(String name, String initialState, Set<String> setOfPeers, Set<String> setOfStates,Set<String> setOfTransitions,Set<String> setOfMessages){
+	public PA(String name, String initialState, Set<String> setOfPeers, Set<String> setOfStates,Set<String> setOfTransitions,Set<String> setOfMessages){
 		this.name=name;
 		this.initalState=initialState;
 		this.setOfPeers=setOfPeers;

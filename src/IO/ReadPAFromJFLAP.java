@@ -1,3 +1,4 @@
+package IO;
 import org.w3c.dom.*;
 
 import java.util.HashSet;
@@ -8,11 +9,31 @@ import org.apache.xerces.parsers.DOMParser;
 
 public class ReadPAFromJFLAP {	
 	
-	static Set<String> setOfPeers=new HashSet<String>();
-	static Set<String> setOfTransitions=new HashSet<String>(); 
-	static Set<String> setOfMessages=new HashSet<String>();;
-	static Set<String> setOfStates=new HashSet<String>();
-	static String initialState;
+	public static Set<String> setOfPeers=new HashSet<String>();
+	public static Set<String> setOfTransitions=new HashSet<String>(); 
+	public static Set<String> setOfMessages=new HashSet<String>();;
+	public static Set<String> setOfStates=new HashSet<String>();
+	public static String initialState;
+	
+    public static String getInitialState(){
+    	return initialState;
+    }
+    
+    public static Set<String> getSetOfPeers(){
+    	return setOfPeers;
+    }
+    
+    public static Set<String> getSetOfTransitions(){
+    	return setOfTransitions;
+    }
+    
+    public static Set<String> getSetOfMessages(){
+    	return setOfMessages;
+    }
+    
+    public static Set<String> getSetOfStates(){
+    	return setOfStates;
+    }
 	
 	public static void read()
     {
